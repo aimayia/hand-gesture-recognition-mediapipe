@@ -21,6 +21,16 @@ class CNNKeyPointClassifier(object):
         self,
         landmark_list,
     ):
+        """
+        Classify hand gesture from keypoint landmarks.
+
+        Args:
+            landmark_list: List of 42 normalized keypoint values
+                           (21 keypoints × 2 coordinates: x, y)
+
+        Returns:
+            int: Predicted class index
+        """
         input_details_tensor_index = self.input_details[0]['index']
         # Reshape from (42,) to (21, 2) for CNN input
         landmark_array = np.array(landmark_list, dtype=np.float32).reshape(21, 2)
